@@ -57,10 +57,3 @@ class UserChangeForm(forms.ModelForm):
         model = get_user_model()
         fields = ['email', ]
 
-
-class LoginForm(forms.Form):
-
-    """Форма для входа в систему
-    """
-    username = forms.CharField()
-    password = forms.CharField()
