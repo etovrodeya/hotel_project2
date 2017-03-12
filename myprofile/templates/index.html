@@ -3,40 +3,6 @@
 Отель "Название"
 {% endblock %}
 {% block content %}
-<!-- Навигационная панель -->
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-	<!-- Кнопка вызова меню при max-width: 600px -->
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Logo</a>
-    </div>
-	<!-- Пункты навигационной панели -->
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-	  <!-- Кнопка log in -->
-	  {% if user.is_authenticated %}
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'myprofile:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-      </ul>
-	  {% else %}
-	  <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'myprofile:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-	  {% endif %}
-    </div>
-  </div>
-</nav>
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Слоты для слайдов -->
     <ol class="carousel-indicators">
@@ -75,8 +41,11 @@
 </div>
   
 <div class="container text-center">    
+    <br>
+    <div class="container-fluid text-center">
+        <a class="btn btn-success btn-lg" href="{% url 'myprofile:registrate' %}"> ЗАРЕГИСТРИРУЙТЕСЬ </a> 
+    </div>
   <h3>What We Do</h3><br>
-  <h2>Привет {{ user.email }} </h2><br>
   <div class="row">
     <div class="col-sm-4">
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">

@@ -5,14 +5,20 @@ from django.contrib.auth import get_user_model
 
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(
-        label='Пароль',
-        widget=forms.PasswordInput
+        widget=forms.TextInput(attrs={
+            'class':'form-control',
+            'type':'password',
+            'placeholder':'Enter password',
+            }),
     )
     password2 = forms.CharField(
-        label='Подтверждение',
-        widget=forms.PasswordInput
+        widget=forms.TextInput(attrs={
+            'class':'form-control',
+            'type':'password',
+            'placeholder':'Enter password',
+            }),
     )
-
+    
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
@@ -29,9 +35,11 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('email',)
-
-
+        fields = ['email',]
+        widgets = {
+            'email': forms.TextInput(attrs={'class':'form-control', 'type':'email', 'placeholder':'Enter email'}),
+            }
+        
 class UserChangeForm(forms.ModelForm):
 
     '''
