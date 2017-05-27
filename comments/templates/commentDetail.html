@@ -1,0 +1,11 @@
+﻿{% extends "commentBase.html" %}
+{% block title %}
+Отель "Название" - Аутентификация
+{% endblock %}
+{% block commentsPlace %}
+<h1>{{ commentDetail.title }}</h1>
+автор: {{ commentDetail.user.surname }} {{ commentDetail.user.firstname }} {{ commentDetail.user.patronymic }}
+<br />{{ commentDetail.date }}
+<p />
+<p /><span style="word-wrap:break-word;">{{ commentDetail.comment}}</span>
+{% endblock %}

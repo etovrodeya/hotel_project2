@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from myprofile.models import User
-from myprofile.forms import UserCreationForm
+from myprofile.forms import UserCreationForm,ProfileForm
 
 def main(request):
     return render(request, 'index.html')
@@ -49,3 +49,18 @@ def registrate(request):
         else:
             args['form']=newuser_form
     return render(request,'registrate.html', args)
+
+@csrf_protect
+def profile(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    message = 'Ваш профиль был изменен!'
+    error = 'Ошибка при заполнении полей'
+    form = ProfileForm(instance = request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance = request.user)
+        if form.is_valid():
+            form.save()
+            return render(request, 'profile.html', {'form': form,'message': message})
+        return render(request, 'profile.html', {'form': form,'error': error})
+    return render(request, 'profile.html', {'form': form,})

@@ -1,1 +1,121 @@
 {% extends "base.html" %}
+{% block title %}
+Отель "Название" - Профиль
+{% endblock %}
+{% block content %}
+<div class="container-fluid text-center">
+    <h3>Профиль</h3>
+	{% if message %}
+    <div class="alert alert-success alert-dismissable fade in">
+	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    {{ message }}
+	</div>
+	{% endif %}
+	{% if error %}
+    <div class="alert alert-danger alert-dismissable fade in">
+	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    {{ error }}
+	</div>
+	{% endif %}
+    <form class="form-horizontal" action="{% url 'myprofile:profile' %}" method="POST">
+	{% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.email.id_for_label }}">Email:</label>
+            <div class="col-sm-6">
+                {{ form.email }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.firstname.id_for_label }}">Имя/Сокращенное название компании</label>
+            <div class="col-sm-9">
+                {{ form.firstname }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.surname.id_for_label }}">Фамилия/Полное название компании:</label>
+            <div class="col-sm-9">
+                {{ form.surname }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.patronymic.id_for_label }}">Отчество/Название компании на иностранном языке:</label>
+            <div class="col-sm-9">
+                {{ form.patronymic }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.category.id_for_label }}">Тип лица:</label>
+            <div class="radio col-sm-9">
+                {{ form.category }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.balance.id_for_label }}">Баланс:</label>
+            <div class="col-sm-9">
+                {{ form.balance }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.country.id_for_label }}">Страна:</label>
+            <div class="col-sm-9">
+                {{ form.country }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.city.id_for_label }}">Город:</label>
+            <div class="col-sm-9">
+                {{ form.city }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.phone.id_for_label }}">Телефон:</label>
+            <div class="col-sm-9">
+                {{ form.phone }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.index.id_for_label }}">Почтовый индекс:</label>
+            <div class="col-sm-9">
+                {{ form.index }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.street.id_for_label }}">Улица:</label>
+            <div class="col-sm-9">
+                {{ form.street }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.home.id_for_label }}">Дом:</label>
+            <div class="col-sm-9">
+                {{ form.home }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.region.id_for_label }}">Область:</label>
+            <div class="col-sm-9">
+                {{ form.region }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.office.id_for_label }}">Номер дома/офиса:</label>
+            <div class="col-sm-9">
+                {{ form.office }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.birthday.id_for_label }}">День рождения:</label>
+            <div class="col-sm-9">
+                {{ form.birthday }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="{{ form.avatar.id_for_label }}">Аватар:</label>
+            <div class="col-sm-9">
+                {{ form.avatar }}
+            </div>
+        </div>
+		<input type="submit" value="Save" class='btn btn-success  btn-lg'/>
+    </form>
+</div>
+{% endblock %}

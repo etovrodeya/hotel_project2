@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth import get_user_model
-
+from myprofile.models import User
 
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(
@@ -65,3 +65,28 @@ class UserChangeForm(forms.ModelForm):
         model = get_user_model()
         fields = ['email', ]
 
+class ProfileForm(forms.ModelForm):
+  class Meta:
+    model = get_user_model()
+    fields = ['email','firstname','surname','patronymic','category',
+              'balance','country','city','phone',
+              'index','street','home','region','office',
+              'birthday','avatar']
+    widgets = {
+        'email': forms.TextInput(attrs={'class':'form-control', 'type':'email', 'placeholder':'Enter email'}),
+        'firstname': forms.TextInput(attrs={'class':'form-control'}),
+        'surname': forms.TextInput(attrs={'class':'form-control'}),
+        'patronymic': forms.TextInput(attrs={'class':'form-control'}),
+        'category': forms.RadioSelect(attrs={}),
+        'balance': forms.TextInput(attrs={'class':'form-control'}),
+        'country': forms.TextInput(attrs={'class':'form-control'}),
+        'city': forms.TextInput(attrs={'class':'form-control'}),
+        'phone': forms.TextInput(attrs={'class':'form-control'}),
+        'index': forms.TextInput(attrs={'class':'form-control'}),
+        'street': forms.TextInput(attrs={'class':'form-control'}),
+        'home': forms.TextInput(attrs={'class':'form-control'}),
+        'region': forms.TextInput(attrs={'class':'form-control'}),
+        'office': forms.TextInput(attrs={'class':'form-control'}),
+        'birthday': forms.TextInput(attrs={'class':'form-control'}),
+        'avatar': forms.TextInput(attrs={'class':'form-control'}),
+        }

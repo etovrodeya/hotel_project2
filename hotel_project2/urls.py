@@ -20,6 +20,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'',include('myprofile.urls', namespace="myprofile")),
+    url(r'comments/',include('comments.urls',namespace='comments')),
     url(r'^admin/', admin.site.urls),
 ]
 
