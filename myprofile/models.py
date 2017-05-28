@@ -119,7 +119,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True
         )
-    birthday=models.DateTimeField(
+    birthday=models.DateField(
         'День рождения',
         null=True,
         blank=True

@@ -1,0 +1,14 @@
+﻿{% extends "myprofileBase.html" %}
+{% block title %}
+Отель "Название" - Аутентификация
+{% endblock %}
+{% block myprofilePlace %}
+<h3 class="text-center"><b>№ Заявки {{ bookingDetail.id }}</b></h3>
+<p class="text-left" /><b>Дата заезда: </b>{{ bookingDetail.s_date }} <b>Дата заезда:</b> {{ bookingDetail.e_date }} 
+<p class="text-left" /><b>Комната: </b> {{ bookingDetail.room }} <b>Класс комнаты: </b> {{ bookingDetail.style }}
+<p class="text-left" /><b>Статус: </b> {{ bookingDetail.status }}
+<p class="text-left" /><b>Коментарий: </b> {{ bookingDetail.comment }}
+<p class="text-left" /><b>Количество детей: </b>{{ bookingDetail.child }} <b>Количество взрослых:</b> {{ bookingDetail.number_peoples }} 
+<p class="text-left" /><b>Дата заявки: </b> {{ bookingDetail.date }}
+<p class="text-left" /><b>Стоимость: </b> {{ bookingDetail.price }}
+{% endblock %}

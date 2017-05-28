@@ -1,0 +1,42 @@
+﻿{% extends "myprofileBase.html" %}
+{% block title %}
+Отель "Название" - Список заявок
+{% endblock %}
+{% block myprofilePlace %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>№Заявки</th>
+        <th>Дата заявки</th>
+        <th>Пользователь</th>
+        <th>Класс</th>
+        <th>Статус</th>
+        <th>Цена</th>
+      </tr>
+    </thead>
+	<tbody>
+{% for booking in bookingList %}
+      {% if booking.status == "1" %}
+	  <tr class='active'>
+	  {% elif booking.status == "2" %}
+	  <tr class='warning'>
+	  {% elif booking.status == "3" %}
+	  <tr class='success'>
+	  {% else %}
+	  <tr class='danger'>
+	  {% endif %}
+	    <td>{{ booking.id }}</td>
+	    <td>{{ booking.date }}</td>
+        <td>{{ booking.user }}</td>
+        <td>{{ booking.style }}</td>
+        <td>{{ booking.status }}</td>
+        <td>{{ booking.price }}</td>
+		<td><a href="/booking/detail/{{ booking.id }}/" class="btn btn-info" role="button">Посмотреть</a></td>
+		<td><a href="/booking/edit/{{ booking.id }}/" class="btn btn-success" role="button">Изменить</a></td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+﻿{% extends "myprofileBase.html" %}
+{% block title %}
+Отель "Название" - Редактирование заявки
+{% endblock %}
+{% block myprofilePlace %}
+<div class="container-fluid text-center">
+    <h3>Подать заявку</h3>
+    <form class="form-horizontal" action="" method="POST">
+        {% csrf_token %}
+	    {{ form.as_p }}
+	    <input type="submit" value="Отправить" class='btn btn-success  btn-lg'/>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+Отель "Название" - Коментарии
+{% endblock %}
+{% block content %}
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="{% url 'booking:create' %}">Оформить заявку</a></p>
+	  <p><a href="{% url 'booking:list' %}">Список заявок</a></p>
+	  <p><a href="{% url 'myprofile:profile' %}">Профиль</a></p>
+    </div>
+    <div class="col-sm-10 text-left"> 
+	{% block myprofilePlace %}
+	{% endblock %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

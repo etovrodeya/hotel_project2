@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth import get_user_model
 from myprofile.models import User
+from django.forms.extras.widgets import SelectDateWidget
 
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(
@@ -77,7 +78,7 @@ class ProfileForm(forms.ModelForm):
         'firstname': forms.TextInput(attrs={'class':'form-control'}),
         'surname': forms.TextInput(attrs={'class':'form-control'}),
         'patronymic': forms.TextInput(attrs={'class':'form-control'}),
-        'category': forms.RadioSelect(attrs={}),
+        'category': forms.Select(attrs={'class':'form-control'}),
         'balance': forms.TextInput(attrs={'class':'form-control'}),
         'country': forms.TextInput(attrs={'class':'form-control'}),
         'city': forms.TextInput(attrs={'class':'form-control'}),
@@ -87,6 +88,6 @@ class ProfileForm(forms.ModelForm):
         'home': forms.TextInput(attrs={'class':'form-control'}),
         'region': forms.TextInput(attrs={'class':'form-control'}),
         'office': forms.TextInput(attrs={'class':'form-control'}),
-        'birthday': forms.TextInput(attrs={'class':'form-control'}),
+        'birthday': SelectDateWidget(attrs={'class':'form-control'}),
         'avatar': forms.TextInput(attrs={'class':'form-control'}),
         }
