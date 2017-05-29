@@ -18,6 +18,14 @@
 	</div>
 	{% endif %}
     <form class="form-horizontal" action="{% url 'myprofile:profile' %}" method="POST">
+	{% if profile.avatar != "" %}
+	<img src="{{ MEDIA_URL }}{{profile.avatar}}" width="200" height="222">
+	{% else %}
+	<img src="https://placehold.it/1200x400?text=IMAGE" width="200" height="222">
+	{% endif %}
+	<p />
+	<br /><a class="btn btn-success" href="{% url 'myprofile:imageLoad' %}">Изменить аватар</a>
+	<p />
 	{% csrf_token %}
         <div class="form-group">
             <label class="control-label col-sm-2" for="{{ form.email.id_for_label }}">Email:</label>

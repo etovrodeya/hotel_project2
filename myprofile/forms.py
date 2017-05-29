@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth import get_user_model
-from myprofile.models import User
+from myprofile.models import User,UserAvatar
 from django.forms.extras.widgets import SelectDateWidget
 
 class UserCreationForm(forms.ModelForm):
@@ -72,7 +72,7 @@ class ProfileForm(forms.ModelForm):
     fields = ['email','firstname','surname','patronymic','category',
               'balance','country','city','phone',
               'index','street','home','region','office',
-              'birthday','avatar']
+              'birthday']
     widgets = {
         'email': forms.TextInput(attrs={'class':'form-control', 'type':'email', 'placeholder':'Enter email'}),
         'firstname': forms.TextInput(attrs={'class':'form-control'}),
@@ -88,6 +88,14 @@ class ProfileForm(forms.ModelForm):
         'home': forms.TextInput(attrs={'class':'form-control'}),
         'region': forms.TextInput(attrs={'class':'form-control'}),
         'office': forms.TextInput(attrs={'class':'form-control'}),
-        'birthday': SelectDateWidget(attrs={'class':'form-control'}),
-        'avatar': forms.TextInput(attrs={'class':'form-control'}),
+        'birthday': SelectDateWidget(years=range(1901, 2017),attrs={'class':'form-control'}),
+
         }
+
+class UserAvatarForm(forms.ModelForm):
+    class Meta:
+        model= UserAvatar
+        fields=['avatar']
+        widgets = {
+            'user': forms.HiddenInput(),
+            }

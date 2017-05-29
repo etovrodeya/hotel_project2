@@ -128,12 +128,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         'date joined',
         auto_now_add=True
         )
-    avatar=models.ImageField(
-        'Аватар',
-        upload_to='user/avatars/',
-        null=True,
-        blank=True
-        )
     is_admin = models.BooleanField(
         'Суперпользователь',
         default=False
@@ -157,3 +151,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta():
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
+
+class UserAvatar(models.Model):
+    user=models.OneToOneField(User)
+    avatar=models.ImageField(
+        'Аватар',
+        upload_to='users/',
+        null=True,
+        blank=True
+        )
+    
+    def __unicode__(self):
+        return unicode(self.picture.name)
