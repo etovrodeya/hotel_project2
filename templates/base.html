@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load staticfiles%}
+{% load staticfiles %}
 <head>
   <title>{% block title %}Bootstrap Example {% endblock %}</title>
   <meta charset="utf-8">
@@ -57,15 +57,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="{% url 'myprofile:main' %}">Logo</a>
+      <a class="navbar-brand" href="{% url 'myprofile:main' %}">Главная</a>
     </div>
 	<!-- Пункты навигационной панели -->
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
         <li><a href="{% url 'myprofile:profile' %}">Профиль</a></li>
         <li><a href="{% url 'comments:list' %}">Отзывы</a></li>
+		<li><a href="{% url 'myprofile:about' %}">О нас</a></li>
       </ul>
 	  <!-- Кнопка log in -->
 	  {% if user.is_authenticated %}
