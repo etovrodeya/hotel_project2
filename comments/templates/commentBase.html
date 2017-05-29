@@ -9,17 +9,9 @@
       <p><a href="{% url 'comments:list' %}">Список коментариев</a></p>
       <p><a href="{% url 'comments:review' %}">Написать коментарий</a></p>
     </div>
-    <div class="col-sm-8 text-left"> 
+    <div class="col-sm-10 text-left"> 
 	{% block commentsPlace %}
 	{% endblock %}
-    </div>
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
     </div>
   </div>
 </div>

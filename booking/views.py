@@ -1,7 +1,8 @@
 from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponseForbidden
 from booking.models import Booking
 from booking.forms import BookingCreateForm,BookingEditForm
 from django.views.generic.edit import UpdateView
@@ -43,3 +44,11 @@ class BookingEdit(UpdateView):
     template_name = 'bookingEdit.html'
     success_url = '/booking/list'
     pk_url_kwarg = 'booking_id'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        task = super(BookingEdit, self).get_object()
+        if self.request.user.status != "M":
+            return HttpResponseForbidden()
+        return UpdateView.dispatch(self, request, *args, **kwargs)
+        

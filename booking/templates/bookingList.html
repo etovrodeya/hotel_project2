@@ -31,8 +31,11 @@
         <td>{{ booking.style }}</td>
         <td>{{ booking.status }}</td>
         <td>{{ booking.price }}</td>
+		{% if user.status == "U"%}
 		<td><a href="/booking/detail/{{ booking.id }}/" class="btn btn-info" role="button">Посмотреть</a></td>
+		{% else %}
 		<td><a href="/booking/edit/{{ booking.id }}/" class="btn btn-success" role="button">Изменить</a></td>
+		{% endif %}
       </tr>
 {% endfor %}
     </tbody>

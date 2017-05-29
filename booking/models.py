@@ -1,36 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-class Room (models.Model):
-    housing = models.SmallIntegerField(
-        'Корпус'
-        )
-    floor = models.SmallIntegerField(
-        'Этаж'
-        )
-    number = models.SmallIntegerField(
-        'Номер'
-        )
-    per_night = models.SmallIntegerField(
-        'Стоимость за ночь'
-        )
-    number_beds = models.SmallIntegerField(
-        'Количество спальных мест'
-        )
-    STYLE_CHOICES=(
-        ('budget','Бюджетный'),
-        ('business','Бизнесс-класс'),
-        ('lux','Люкс')
-        )
-    style=models.CharField(
-            'Класс аппартаментов',
-            max_length=15,
-            choices=STYLE_CHOICES
-            )
-    
-    def __str__(self):
-        return str(self.housing)+str(self.floor)+str(self.number)
-
 class Booking(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL
