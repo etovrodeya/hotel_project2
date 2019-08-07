@@ -1,4 +1,4 @@
 # hotel_project2
-info system of hotel complex
-project for study
+Project info system for hotel<br/>
+were made for study<br/>
 Python 3.2\Django 1.9\SQLite3
